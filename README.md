@@ -15,7 +15,8 @@
 2. Build tool: Maven
 3. Framework: TestNG Framework using Java and Maven
 4. Report path: \\Report\\{Date of execution}\\Report_{timestamp}.html
-5. Browser used: Chrome (Version: 100)
+5. Browser used: Chrome Version: 100 (Others browsers like Safari, Edge or Firefox can also be configured based on the
+   scope of cross browser testing)
 
 ### Getting started with the framework
 
@@ -26,8 +27,8 @@
     2. Right click on project: Maven --> Update dependencies
     3. Right click on project: Maven --> Update project configuration
 4. While setting up the framework, disconnect any VPN or go behind the firewall as it may not let the pom.xml to connect
-   to Maven repo and download the dependencies of the project. This is very important to ensure that you download and install all the
-   dependencies
+   to Maven repo and download the dependencies of the project. This is very important to ensure that you download and
+   install all the dependencies
 5. Once all maven dependencies are downloaded, update or refresh the project
 
 ### Steps to Run the project

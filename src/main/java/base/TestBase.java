@@ -67,39 +67,6 @@ public class TestBase implements ITestListener {
             wait = new WebDriverWait(driver, Duration.ofSeconds(20));
             driver.manage().deleteAllCookies();
             driver.manage().window().maximize();
-        } else if (prop.getProperty("browser").equalsIgnoreCase("firefox")) {
-            WebDriverManager.firefoxdriver().setup();
-            FirefoxOptions options = new FirefoxOptions();
-            driver = new FirefoxDriver(options);
-            wait = new WebDriverWait(driver, Duration.ofSeconds(20));
-            driver.manage().deleteAllCookies();
-            driver.manage().window().maximize();
-            driver.manage().timeouts().implicitlyWait(TestUtil.Implicit_wait, TimeUnit.SECONDS);
-            driver.manage().timeouts().pageLoadTimeout(TestUtil.Page_load_Timeout, TimeUnit.SECONDS);
-        } else if (prop.getProperty("browser").equalsIgnoreCase("edge")) {
-            WebDriverManager.edgedriver().setup();
-            EdgeOptions options = new EdgeOptions();
-            driver = new EdgeDriver(options);
-            wait = new WebDriverWait(driver, Duration.ofSeconds(20));
-            driver.manage().deleteAllCookies();
-            driver.manage().window().maximize();
-            driver.manage().timeouts().implicitlyWait(TestUtil.Implicit_wait, TimeUnit.SECONDS);
-            driver.manage().timeouts().pageLoadTimeout(TestUtil.Page_load_Timeout, TimeUnit.SECONDS);
-        } else {
-            WebDriverManager.chromedriver().setup();
-            ChromeOptions options = new ChromeOptions();
-            options.setExperimentalOption("useAutomationExtension", false);
-            options.setExperimentalOption("excludeSwitches", Collections.singletonList("enable-automation"));
-            Map<String, Object> prefs = new HashMap<>();
-            prefs.put("credentials_enable_service", false);
-            prefs.put("profile.password_manager_enabled", false);
-            options.setExperimentalOption("prefs", prefs);
-            driver = new ChromeDriver(options);
-            wait = new WebDriverWait(driver, Duration.ofSeconds(20));
-            driver.manage().deleteAllCookies();
-            driver.manage().window().maximize();
-            driver.manage().timeouts().implicitlyWait(TestUtil.Implicit_wait, TimeUnit.SECONDS);
-            driver.manage().timeouts().pageLoadTimeout(TestUtil.Page_load_Timeout, TimeUnit.SECONDS);
         }
     }
 
