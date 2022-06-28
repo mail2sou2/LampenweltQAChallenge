@@ -19,6 +19,7 @@ public class ProductPage extends TestBase {
     public Map<String, ProductDetails> map = new HashMap();
 
     By productTitle = By.xpath("//h1");
+    By productRegularPrice = By.xpath("//div[@class='product-view__main-info']//span[@class='regular-price']/span[@class='price']");
     By productPrice = By.xpath("(//span[@class='price']/span)[2]");
     By productQuantity = By.xpath("//select[@id='qty']");
     By inDenWarenkorb = By.xpath("//span[text()='In den Warenkorb']");
@@ -35,7 +36,10 @@ public class ProductPage extends TestBase {
             proId = Action.getTextEle(prodId);
             proId = proId.trim();
             productName = Action.getTextEle(productTitle);
-            selectedProductPrice = Action.getTextEle(productPrice);
+            if(Action.isElementDisplayed(productRegularPrice))
+                selectedProductPrice = Action.getTextEle(productRegularPrice);
+            else
+                selectedProductPrice = Action.getTextEle(productPrice);
             selectedProductPrice = selectedProductPrice.replace(',', '.');
             Select quantity = new Select(driver.findElement(productQuantity));
             quantity.selectByValue("1");

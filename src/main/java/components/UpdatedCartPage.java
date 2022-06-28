@@ -26,13 +26,17 @@ public class UpdatedCartPage extends TestBase {
             By cartProductName = By.xpath("(//div[@class='m-productRow__name']/a)[" + k + "]");
             By cartProductId = By.xpath("(//div/p[@class='m-productRow__sku'])[" + k + "]");
             By cartProductQuantity = By.xpath("(//select[contains(@class,'qty js-qty-select')])[" + k + "]");
-            By cartProductPrice = By.xpath("(//div[@class='m-productRow__total']//span[@class='price'])[" + k * 2 + "]");
             fetchedCartProductName = Action.getTextEle(cartProductName);
             Select quantity = new Select(driver.findElement(cartProductQuantity));
             fetchedCartQuantity = quantity.getFirstSelectedOption().getText();
             fetchedCartProId = Action.getTextEle(cartProductId);
             fetchedCartProId = (fetchedCartProId.split(" "))[1];
-            fetchedCartProductPrice = Action.getTextEle(cartProductPrice);
+            By cartProductPrice = By.xpath("(//div[@data-sku='"+fetchedCartProId+"']//span[@class='price'])[2]");
+            By cartProductRegularPrice = By.xpath("//div[@data-sku='"+fetchedCartProId+"']//span[@class='regular-price']/span[@class='price']");
+            if(Action.isElementDisplayed(cartProductRegularPrice))
+                fetchedCartProductPrice = Action.getTextEle(cartProductRegularPrice);
+            else
+                fetchedCartProductPrice = Action.getTextEle(cartProductPrice);
             fetchedCartProductPrice = (fetchedCartProductPrice.split(" "))[0];
             fetchedCartProductPrice = fetchedCartProductPrice.replace(',', '.');
             getCartDetails(newCartMap);
